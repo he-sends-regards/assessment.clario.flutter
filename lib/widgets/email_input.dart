@@ -25,20 +25,24 @@ class EmailInputState extends State<EmailInput> {
     return TextFormField(
       controller: widget.controller,
       decoration: InputDecoration(
-        labelText: "Email",
+        labelText: null,
         hintText: "Enter your email",
         fillColor: Colors.white,
         filled: true,
-        contentPadding: const EdgeInsets.fromLTRB(20, 14.5, 45, 14.5),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 14.5, horizontal: 20),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: Colors.transparent,
-          ),
+          borderSide: BorderSide(
+              color: widget.isSubmitted
+                  ? (widget.isValid
+                      ? AppColors.inputBorderValid
+                      : AppColors.inputBorderInvalid)
+                  : Colors.transparent),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -52,11 +56,17 @@ class EmailInputState extends State<EmailInput> {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.inputBorderInvalid),
+          borderSide: BorderSide(
+              color: (widget.isValid
+                  ? AppColors.inputBorderValid
+                  : AppColors.inputBorderInvalid)),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: AppColors.inputBorderInvalid),
+          borderSide: BorderSide(
+              color: (widget.isValid
+                  ? AppColors.inputBorderValid
+                  : AppColors.inputBorderInvalid)),
         ),
       ),
       style: TextStyle(

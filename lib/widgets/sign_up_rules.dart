@@ -59,7 +59,7 @@ class RuleItem extends StatelessWidget {
       text,
       style: TextStyle(
         color: isSubmitted
-            ? (isValid ? AppColors.rulesValid : AppColors.rulesValid)
+            ? (isValid ? AppColors.rulesValid : AppColors.rulesInvalid)
             : AppColors.commonText,
         fontSize: 13,
       ),

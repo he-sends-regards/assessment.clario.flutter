@@ -35,7 +35,10 @@ class PasswordInputState extends State<PasswordInput> {
       obscureText: _isHidden,
       keyboardType: TextInputType.visiblePassword,
       decoration: InputDecoration(
-        labelText: 'Create your password',
+        labelText: null,
+        errorText: null,
+        helperText: null,
+        suffixText: null,
         hintText: "Create your password",
         suffixIcon: Padding(
           padding: const EdgeInsets.only(right: 12),
@@ -51,6 +54,10 @@ class PasswordInputState extends State<PasswordInput> {
             onPressed: _toggleVisibility,
           ),
         ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
+        ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
@@ -63,11 +70,25 @@ class PasswordInputState extends State<PasswordInput> {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.transparent),
+          borderSide: BorderSide(
+              color: widget.isSubmitted
+                  ? (widget.isValid
+                      ? AppColors.inputBorderValid
+                      : AppColors.inputBorderInvalid)
+                  : Colors.transparent),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: AppColors.inputBorderInvalid),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: AppColors.inputBorderInvalid),
         ),
         fillColor: Colors.white,
         filled: true,
-        contentPadding: const EdgeInsets.fromLTRB(20, 14.5, 20, 14.5),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 14.5, horizontal: 20),
       ),
       style: TextStyle(
         color: widget.isSubmitted
