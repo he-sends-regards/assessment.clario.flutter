@@ -19,6 +19,8 @@ class AppColors {
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
   );
-  static const Color rulesValid = Color(0x6637B274);
+  static const Color rulesValid = Color(0xFF62C69D);
   static const Color rulesInvalid = Color(0xFFFF8080);
+  static const Color toastBackground = Color(0xFF40BA85);
+  static const Color toastText = Colors.white;
 }
